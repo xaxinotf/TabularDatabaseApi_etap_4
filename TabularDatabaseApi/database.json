@@ -1,0 +1,22 @@
+{
+  "Tables": [
+    {
+      "Name": "string",
+      "Fields": [
+        {
+          "Name": "string",
+          "Type": 1
+        }
+      ],
+      "Rows": [
+        {
+          "Values": {
+            "additionalProp1": "string",
+            "additionalProp2": "string",
+            "additionalProp3": "string"
+          }
+        }
+      ]
+    }
+  ]
+}

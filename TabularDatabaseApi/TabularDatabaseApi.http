@@ -1,0 +1,6 @@
+@TabularDatabaseApi_HostAddress = http://localhost:5195
+
+GET {{TabularDatabaseApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

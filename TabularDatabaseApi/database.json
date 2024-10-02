@@ -1,19 +1,189 @@
 {
   "Tables": [
     {
-      "Name": "string",
+      "Name": "table1",
       "Fields": [
         {
-          "Name": "string",
+          "Name": "Id",
           "Type": 1
+        },
+        {
+          "Name": "Name",
+          "Type": 4
         }
       ],
       "Rows": [
         {
           "Values": {
-            "additionalProp1": "string",
-            "additionalProp2": "string",
-            "additionalProp3": "string"
+            "Id": 1,
+            "Name": "John"
+          }
+        },
+        {
+          "Values": {
+            "Id": 2,
+            "Name": "Jane"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "table2",
+      "Fields": [
+        {
+          "Name": "Id",
+          "Type": 1
+        },
+        {
+          "Name": "Name",
+          "Type": 4
+        }
+      ],
+      "Rows": [
+        {
+          "Values": {
+            "Id": 1,
+            "Name": "John"
+          }
+        },
+        {
+          "Values": {
+            "Id": 3,
+            "Name": "Alice"
+          }
+        },
+        {
+          "Values": {
+            "Id": 4,
+            "Name": "Bob"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "resultTable",
+      "Fields": [
+        {
+          "Name": "Id",
+          "Type": 1
+        },
+        {
+          "Name": "Name",
+          "Type": 4
+        }
+      ],
+      "Rows": [
+        {
+          "Values": {
+            "Id": 3,
+            "Name": "Alice"
+          }
+        },
+        {
+          "Values": {
+            "Id": 4,
+            "Name": "Bob"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "resultTable",
+      "Fields": [
+        {
+          "Name": "Id",
+          "Type": 1
+        },
+        {
+          "Name": "Name",
+          "Type": 4
+        }
+      ],
+      "Rows": [
+        {
+          "Values": {
+            "Id": 3,
+            "Name": "Alice"
+          }
+        },
+        {
+          "Values": {
+            "Id": 4,
+            "Name": "Bob"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "resultTable",
+      "Fields": [
+        {
+          "Name": "Id",
+          "Type": 1
+        },
+        {
+          "Name": "Name",
+          "Type": 4
+        }
+      ],
+      "Rows": [
+        {
+          "Values": {
+            "Id": 3,
+            "Name": "Alice"
+          }
+        },
+        {
+          "Values": {
+            "Id": 4,
+            "Name": "Bob"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "dateTable1",
+      "Fields": [
+        {
+          "Name": "EventDate",
+          "Type": 5
+        }
+      ],
+      "Rows": [
+        {
+          "Values": {
+            "EventDate": "2023-01-01"
+          }
+        },
+        {
+          "Values": {
+            "EventDate": "2023-02-15"
+          }
+        }
+      ]
+    },
+    {
+      "Name": "dateTable2",
+      "Fields": [
+        {
+          "Name": "EventDate",
+          "Type": 5
+        }
+      ],
+      "Rows": [
+        {
+          "Values": {
+            "EventDate": "2023-01-01"
+          }
+        },
+        {
+          "Values": {
+            "EventDate": "2023-03-10"
+          }
+        },
+        {
+          "Values": {
+            "EventDate": "2023-04-20"
           }
         }
       ]

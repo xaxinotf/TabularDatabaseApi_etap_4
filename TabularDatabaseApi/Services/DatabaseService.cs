@@ -96,24 +96,62 @@ namespace TabularDatabaseApi.Services
             if (table1 == null || table2 == null)
                 throw new Exception("Одна з таблиць не знайдена.");
 
-            if (!TableStructuresEqual(table1, table2))
-                throw new Exception("Таблиці мають різну структуру.");
+            var resultTable = new Table { Name = resultTableName, Fields = table1.Fields };
 
-            var resultTable = new Table
+            foreach (var row1 in table1.Rows)
             {
-                Name = resultTableName,
-                Fields = table1.Fields
-            };
-
-            resultTable.Rows = table1.Rows.Where(row1 =>
-                !table2.Rows.Any(row2 => RowsEqual(row1, row2))).ToList();
+                bool existsInTable2 = table2.Rows.Any(row2 => row2.Values.SequenceEqual(row1.Values));
+                if (!existsInTable2)
+                    resultTable.Rows.Add(row1);
+            }
 
             _database.Tables.Add(resultTable);
-            SaveToFile();
-
-            return resultTable;
+            return resultTable; // Повернення результатної таблиці
         }
 
+        private bool RowValuesAreEqual(Dictionary<string, object> values1, Dictionary<string, object> values2, List<Field> fields)
+        {
+            foreach (var field in fields)
+            {
+                var key = field.Name;
+                if (values1.ContainsKey(key) && values2.ContainsKey(key))
+                {
+                    // Додаткова перевірка для типів DateInterval
+                    if (field.Type == DataType.DateInterval)
+                    {
+                        var val1 = values1[key]?.ToString();
+                        var val2 = values2[key]?.ToString();
+                        if (!DateIntervalEqual(val1, val2))
+                        {
+                            return false;
+                        }
+                    }
+                    else if (!values1[key].Equals(values2[key]))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool DateIntervalEqual(string interval1, string interval2)
+        {
+            if (string.IsNullOrEmpty(interval1) || string.IsNullOrEmpty(interval2))
+                return false;
+
+            var dates1 = interval1.Split('-').Select(d => d.Trim()).ToArray();
+            var dates2 = interval2.Split('-').Select(d => d.Trim()).ToArray();
+
+            if (dates1.Length != 2 || dates2.Length != 2)
+                return false;
+
+            return dates1[0] == dates2[0] && dates1[1] == dates2[1];
+        }
         private void ValidateRow(Table table, Row row)
         {
             foreach (var field in table.Fields)

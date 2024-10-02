@@ -126,6 +126,7 @@ namespace TabularDatabaseApi.Controllers
         {
             try
             {
+                // Виклик методу без присвоєння, оскільки метод повертає таблицю
                 var resultTable = _dbService.DifferenceTables(request.TableName1, request.TableName2, request.ResultTableName);
                 return Ok(resultTable);
             }
